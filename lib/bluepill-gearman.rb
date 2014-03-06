@@ -19,8 +19,7 @@ module Bluepill
           * queue: default queue is 'check_results'
           * key: provide a key for encryption (minimum 8 bytes)
           * encryption: default to false set to true to enable
-          * every: how often the send_gearman will send the passive check
-
+      
           See checks https://github.com/arya/bluepill for the syntax to pass those options
           encryption: https://gist.github.com/RiANOl/1077760
       INFO
@@ -32,8 +31,7 @@ module Bluepill
           :service => options.delete(:service) || process.name,
           :queue => options.delete(:queue) || 'check_results',
           :key => options.delete(:key) || '',
-          :encryption => options.delete(:encryption) || false,
-          :every  => options.delete(:every) || 1.minute
+          :encryption => options.delete(:encryption) || false
         }
         super
       end
@@ -97,8 +95,6 @@ EOT
           result = client.do_task(args[:queue], encoded_job) 
 
           logger.info "Sent Job to Gearman Server #{result}"
-          logger.info "Next job status passive check: #{args[:every]}"
-          sleep(args[:every]) 
         rescue Exception => e
           logger.warn "Failed to send job to the Gearman Server: #{e}"
         end
