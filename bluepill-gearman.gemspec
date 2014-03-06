@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["ami.mahloof@gmail.com"]
   gem.description   = %q{send events to gearman when a bluepill process state changes}
   gem.summary       = %q{send events to gearman via the send_gearman when a bluepill monitored process triggers a state change}
-  gem.homepage      = "http://github.com/innovia/bluepill-gearman"
+  gem.homepage      = "https://github.com/gtforge/bluepill-gearman"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

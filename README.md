@@ -1,4 +1,4 @@
-# Bluepill::Gearman
+# Bluepill::Gearman [![Gem Version](https://badge.fury.io/rb/bluepill-gearman.png)](http://badge.fury.io/rb/bluepill-gearman)
 
 Send bluepill events(passive checks) to gearman server via send gearman
 
@@ -28,7 +28,6 @@ Available options are:
   * queue: default queue is 'check_results'
   * key: provide a key for encryption (minimum 8 bytes)
   * encryption: default to false, set to true to enable - must provide a key
-  * every: how often the send_gearman will send the passive check (default to 1.minute)
 
 add :notify_on => :unmonitored to make bluepill send notification when unmonitored
 
@@ -41,7 +40,7 @@ Bluepill.application("test") do |app|
     process.start_command = "bundle exec ./test.rb"
     process.pid_file = "/var/run/test.pid"
     process.daemonize = true
-    process.checks :send_gearman, :gearman_server => 'my.gearman.server', :host => 'host_in_nagios', :service => 'passive check service name', :notify_on => :unmonitored, :every => 1.minute
+    process.checks :send_gearman, :gearman_server => 'my.gearman.server', :host => 'host_in_nagios', :service => 'passive check service name', :notify_on => :unmonitored
   end
 end
 ```
